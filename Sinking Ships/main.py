@@ -1,4 +1,4 @@
-import requests
+
 import random
 
 from ship import Ship
@@ -32,6 +32,7 @@ API_RESET = "https://europe-west1-ca-2023-dev.cloudfunctions.net/battleshipsApi/
 
 
 # def reset_game():
+#     import requests 
 #     response = requests.get(url=API_RESET, params=QUERY_PARAMS, headers=HEADERS)
 #     return response.json()
 #
@@ -114,6 +115,8 @@ while num_of_tries < 50:
                     else:
                         ship_to_destroy.destroyed = True
                         strategy.remove_destroyed_ship(type_of_ship=ship_to_destroy.length)
+
+                        ship_to_destroy = Ship()
                 else:
                     ship_to_destroy = possible_avenger
                     print("\n")
@@ -125,6 +128,8 @@ while num_of_tries < 50:
                 print("\n")
                 print("WE DESTOYED SHIP")
                 print("\n")
+
+                ship_to_destroy = Ship()
         else:
             row, column = random.choice(possible_moves_around_ship)
             cannon.fire_at_position(row, column)
